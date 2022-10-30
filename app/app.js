@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+const bodyParser = require('body-parser')
+
 
 require('../config/db');
 
 
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 
 const courseRoute = require('../routers/course.route')
@@ -21,7 +23,7 @@ app.use(morgan('dev'))
 
 
 
-app.use( '/allcoures',courseRoute)
+app.use( '/allcoures', cors(),courseRoute)
 
 
 

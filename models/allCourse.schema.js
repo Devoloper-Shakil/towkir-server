@@ -1,6 +1,4 @@
 const { default: mongoose } = require("mongoose");
-const { v4: uuidv4 } = require('uuid');
-
 
 
 const alloursSchema = mongoose.Schema({
@@ -19,13 +17,17 @@ const alloursSchema = mongoose.Schema({
     },
     img: {
        type: String,
-       required: true
+       
     },
     totalEnroll: {
         type: String,
         required: true
     },
     totalClass: {
+        type: String,
+        required: true
+    },
+    classurl: {
         type: String,
         required: true
     }

@@ -1,8 +1,4 @@
 const courses = require('../models/allCourse.schema')
-const cours = require('../models/corse.model')
-
-
-
 
 
 
@@ -14,9 +10,10 @@ const postCours = async (req, res,next) => {
             title: req.body.title,
             description: req.body.description,
             amount: Number(req.body.amount),
-            img: req.file.filename,
+            img: req.body.img,
             totalEnroll: req.body.totalEnroll,
-            totalClass: req.body.totalEnroll
+            totalClass: req.body.totalClass,
+            classurl:req.body.classurl
 
         })
         await corse.save()
@@ -46,16 +43,18 @@ const getOne = async (req, res) => {
         res.status(500).send({ message: error.message })
     }
 }
-const ubdetCours = async (req, res) => {
+const updetCours = async (req, res) => {
     try {
         const updetCours = await courses.findOne({ _id: req.params._id })
 
-        updetCours.title = req.body.title
-        updetCours.description = req.body.description
-        updetCours.amount = Number(req.body.amount)
-        updetCours.tagName = req.body.tagName
-
-
+        updetCours.title= req.body.title,
+        updetCours.description= req.body.description,
+        updetCours.amount= Number(req.body.amount),
+        updetCours.img= req.body.img,
+        updetCours.totalEnroll= req.body.totalEnroll,
+        updetCours.totalClass=req.body.totalClass,
+        updetCours.classurl=req.body.classurl
+      
         await updetCours.save()
 
 
@@ -64,37 +63,6 @@ const ubdetCours = async (req, res) => {
         res.status(500).send(error.message)
     }
 }
-
-
-
-
-
-
-// const ubdatecor=async(cours,req, res)=>{
-//     try {
-//         return await cours.create(cours)
-//         .than((cors=>{
-//             return courses.findByIdAndUpdate(coursesid,{
-//                 $push:{
-//                     cours:{
-//                         _id:coursesid._id,
-//                         url:cors.url
-//                     }
-//                 }
-//             })
-//         }))
-
-//     } catch (error) {
-//         res.status(500).send(error.message)
-//     }
-// }
-
-
-
-
-
-
-
 
 
 const DeleteCours = async (req, res) => {
@@ -107,4 +75,4 @@ const DeleteCours = async (req, res) => {
 }
 
 
-module.exports = { postCours, getCours, getOne, ubdetCours, DeleteCours }  
+module.exports = { postCours, getCours, getOne, updetCours, DeleteCours }  
