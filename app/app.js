@@ -26,7 +26,7 @@ app.use(morgan('dev'))
 app.use( '/allcoures', cors(),courseRoute)
 
 
-
+    
 
 
 //root router

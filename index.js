@@ -1,7 +1,7 @@
 
 const app=require('./app/app')
 
-const port = 5000
+const port = process.env.PORT ||4000
 
 
 
